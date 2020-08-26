@@ -30,7 +30,7 @@ import '@/libs/mixin';
 /**
  * 引入路由
  */
-import router from './routers/index'
+import router from './router/index'
 
 
 new Vue({

@@ -1,4 +1,4 @@
-const modeUrlObj = {
+const envConfig = {
     'development': {
       baseURL: '12development333333',
     },
@@ -13,4 +13,4 @@ const modeUrlObj = {
     }
   }
   
-  export default modeUrlObj[process.env.NODE_ENV]
+  export default envConfig[process.env.NODE_ENV]
