@@ -2,22 +2,17 @@ const path = require("path");
 const CompressionPlugin = require("compression-webpack-plugin");
 
 module.exports = {
-    /**
-     * 加载静态资源相对路径
-     */
     // publicPath: process.env.VUE_APP_OUTPUT_DIR == 'production'?'/':'./',
     publicPath: '/',
-    /**
-     * 请求代理
-     */
     devServer: {
         port: 8899,
+        overlay: {
+            warnings: true,
+            errors: true
+        }
     },
     lintOnSave: false,
     outputDir: process.env.VUE_APP_OUTPUT_DIR,
-    /**
-     * style-resources-loader 公用样式处理
-     */
     pluginOptions: {
         'style-resources-loader': {
             preProcessor: 'less',
@@ -28,9 +23,8 @@ module.exports = {
             ]
         }
     },
-    //设置为false以加速生产环境构建
     productionSourceMap: false,
-    configureWebpack: ()=>{
+    configureWebpack: () => {
         if (process.env.NODE_ENV === 'production') {
             return {
                 plugins: [

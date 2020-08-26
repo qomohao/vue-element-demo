@@ -27,35 +27,16 @@ Vue.use(VueRouter);
 /**
  * 路由列表
  */
- 
-let routerArr=[]
-const files=require.context('./routers',false,/\.js$/);
-files.keys().forEach(v=>{
-    if(v=='./index.js') return;
+
+let routerArr = []
+const files = require.context('./routers', false, /\.js$/);
+files.keys().forEach(v => {
+    // if (v == './index.js') return;
     routerArr.push(...files(v).default)
 })
-
+console.log('routerArr', routerArr)
 const router = new VueRouter({
-    // mode: 'history',
-    // routes: [{
-    //     name: "home",
-    //     path: '/',
-    //     meta: {
-    //         title: '主页'
-    //     },
-    //     component: () => import('@/views/index.vue'),
-    //     children: routerArr
-    // }, {
-    //     name: "login",
-    //     path: '/login',
-    //     meta: {
-    //         title: '登录'
-    //     },
-    //     component: () => import('@/views/other/login.vue')
-    // }, {
-    //     path: "*",
-    //     redirect: "/404"
-    // }]
+    mode: 'history',
     // 页面滚动行为
     // scrollBehavior(to, from, savedPosition) {
     //     if (savedPosition) {
