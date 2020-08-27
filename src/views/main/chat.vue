@@ -2,7 +2,7 @@
     <div class='chat'>
         <vue-drag-resize class="main" :parentLimitation='true' :minw='700' :minh='450' :w='910' :h='585' :x='450'
             :y='50' :preventActiveBehavior='true' :isActive='false'
-            :sticks="['tl', 'tm', 'tr', 'mr', 'br', 'bm', 'bl', 'ml']">
+            :sticks="['tl', 'tm', 'tr', 'mr', 'br', 'bm', 'bl', 'ml']" >
             <div class="flex justify-between">
                 <div class="user-info  flex justify-between column">
                     <div class="flex column align-center">
@@ -56,7 +56,7 @@
                                     我们都是成年人，你不用对我撒谎，我并不生气，我只是生气你在浪费我的感情，以及我对爱情的幻想 --来自网易云音乐《故事》
                                 </div>
                             </div>
-                            <div class="list-item flex justify-end" v-for="i in 1" :key="i">
+                            <div class="list-item flex justify-end" v-for="i in 1" :key="i+1">
                                 <div class="item-content-own">
                                     村上春树说过： “如果一直想见谁 肯定迟早会见到。” 但他还说过： “所见之日乃是终止之时。” --村上春树 </div>
                                 <el-image class="avatar" fit="cover" :src="imgUrl" :preview-src-list="[imgUrl]">
@@ -105,17 +105,24 @@
 
         computed: {},
 
-        mounted() {},
+        mounted() {
+            
+        },
 
         methods: {
             sendMsg() {
                 this.sendStatus = true;
-                console.log(111)
-                let send = setTimeout(() => {
+                //发送信息给服务端
+                this.$socket.emit('login',{
+                    username: this.chatVal,
+                    password: 'password111'
+                });
+                //接收服务端的信息
+                this.sockets.subscribe('relogin', (data) => {
+                    console.log(data)
+                    this.$message.success(data.msg);
                     this.sendStatus = false;
-                    this.$message.success("发送成功!");
-                    clearTimeout(send)
-                }, 1000)
+                })
             }
         }
     }

@@ -22,7 +22,17 @@ Vue.use(ElementUI);
  */
 import VueCropper from 'vue-cropper'
 Vue.use(VueCropper)
+/**
+ * vue-socket.io
+ */
+import VueSocketIO from 'vue-socket.io'
 
+Vue.use(new VueSocketIO({
+  debug: true,
+  // 服务器端地址
+  connection: 'http://localhost:3000',
+  vuex: {}
+}))
 /**
  * mixin
  */
