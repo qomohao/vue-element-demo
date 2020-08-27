@@ -27,7 +27,7 @@ Vue.use(VueCropper)
  * mixin
  */
 import '@/libs/mixin';
-
+import "@/components/index";
 /**
  * 引入路由
  */

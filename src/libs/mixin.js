@@ -21,10 +21,16 @@ Vue.mixin({
       });
     },
     /**
-     * 页面reload
+     * 页面跳转
+     * @param { String } pathName 页面pathName
+     * @param { Object } queryObj 页面参数
      */
-    reload() {
-      location.href=location.href.split('#')[0]
+    goToReplace(pathName, queryObj = {}, params = {}) {
+      this.$router.push({
+        name: pathName,
+        query: queryObj,
+        params
+      });
     },
      /**
      *时间格式转换

@@ -39,7 +39,7 @@ a {
     display: flex;
 }
 
-.flex1{
+.flex1 {
     flex: 1;
 }
 
@@ -164,4 +164,44 @@ a {
 
 .qwee {
     border: 1px solid green;
+}
+
+.slide-fade-enter-active {
+    transition: all .3s ease;
+}
+
+.slide-fade-leave-active {
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to
+
+/* .slide-fade-leave-active for below version 2.1.8 */
+    {
+    transform: translateX(10px);
+    opacity: 0;
+}
+
+
+// ::-webkit-scrollbar — 整个滚动条.
+// ::-webkit-scrollbar-button — 滚动条上的按钮 (上下箭头).
+// ::-webkit-scrollbar-thumb — 滚动条上的滚动滑块.
+// ::-webkit-scrollbar-track — 滚动条轨道.
+// ::-webkit-scrollbar-track-piece — 滚动条没有滑块的轨道部分.
+// ::-webkit-scrollbar-corner — 当同时有垂直滚动条和水平滚动条时交汇的部分.
+// ::-webkit-resizer — 某些元素的corner部分的部分样式(例:textarea的可拖动按钮).
+
+::-webkit-scrollbar {
+    width: 7px;
+    // background: #fff;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: rgba(196, 193, 192, .5);
 }

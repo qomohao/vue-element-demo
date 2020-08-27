@@ -1,10 +1,12 @@
 // 注册全局组件
-// import Vue from 'vue';
+import Vue from 'vue';
 // import navBar from '@/components/nav-bar.vue';
  
 // Vue.component('nav-bar',navBar);
 
 
+import VueDragResize from 'vue-drag-resize'
+Vue.component('vue-drag-resize',VueDragResize);
 
 // 全部注册
 // const files = require.context('./文件夹名/', false, /\.vue$/)

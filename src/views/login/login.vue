@@ -1,6 +1,10 @@
 <template>
-    <div class='login'>
-login
+    <div class='login  flex justify-end align-center'>
+        <transition name="slide-fade">
+        <div class="main qwe">
+
+        </div>
+        </transition>
     </div>
 </template>
 
@@ -23,5 +27,14 @@ login
     }
 </script>
 <style lang="less" scoped>
-    .login {}
+    .login {
+        height: 100vh;
+        overflow: hidden;
+        padding: 0 100px;
+        .main {
+            width: 400px;
+            min-height: 60vh;
+            background: #fff;
+        }
+    }
 </style>

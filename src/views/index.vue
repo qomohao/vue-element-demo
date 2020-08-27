@@ -1,7 +1,6 @@
 <template>
-    <div class='home qwe flex'>
-        <div class="box qwee">home</div>
-        <router-view class="qwee"></router-view>
+    <div class='home'>
+         <router-view></router-view>
     </div>
 </template>
 
