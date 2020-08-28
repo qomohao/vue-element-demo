@@ -1,12 +1,12 @@
 <template>
-    <div class='home'>
-         <router-view></router-view>
+    <div class='setting'>
+        <div class="main qwe">setting</div>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'home',
+        name: 'setting',
         data() {
             return {
 
@@ -23,5 +23,6 @@
     }
 </script>
 <style lang="less" scoped>
-    .home {}
+    .setting {        padding: 20px;
+}
 </style>
