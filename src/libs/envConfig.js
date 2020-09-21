@@ -1,15 +1,15 @@
 const envConfig = {
     'development': {
-      baseURL: '12development333333',
+      baseURL: 'developmentdevelopmentdevelopment',
     },
      'test': {
-      baseURL: '32423testtesttest4234',
+      baseURL: 'testtesttest',
     },
      'test_pre': {
-      baseURL: '234test_pretest_pretest_pre234234',
+      baseURL: 'test_pretest_pretest_pre',
     },
      'production': {
-      baseURL: '23productionproductionproduction4234',
+      baseURL: 'productionproductionproduction',
     }
   }
   

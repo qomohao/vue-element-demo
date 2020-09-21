@@ -3,7 +3,7 @@ import Vue from "vue"
 Vue.mixin({
   data() {
     return {
-      imgUrl:'http://127.0.0.1:3000/upload/',
+       
     }
   },
  
