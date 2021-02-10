@@ -1,6 +1,5 @@
 <template>
   <div class="index flex justify-between">
-    <p>Welcome VUE</p>
     <menu-box class="menu-box qwe"></menu-box>
     <div class="content-box qwee">
       <h1>11111</h1>
@@ -27,11 +26,14 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+
 .index {
-  // height:100vh;
+  height:100vh;
+  color:@text-color;
   .menu-box {
     width: 300px;
     height: 100%;
+    background: @bg-color;
   }
   .content-box {
     width: calc(100% - 300px);

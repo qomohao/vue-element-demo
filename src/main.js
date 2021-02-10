@@ -10,6 +10,17 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
 
+
+/**
+ * 引入全局css样式
+ */
+import '@/assets/style/reset.less'
+import '@/assets/style/common.less'
+import contentType from '@/assets/constants/theme.js'
+const themeType = localStorage.getItem('themeType') || contentType.DEFAULT
+console.log("当前主题====", themeType)
+// import '@/assets/style/theme/default.less'
+
 /**
  * mixin
  */

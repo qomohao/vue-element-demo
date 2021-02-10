@@ -72,5 +72,8 @@ export default {
 </script>
 <style lang="less" scoped>
 .index {
+  /deep/ .el-menu {
+    border:none;
+  }
 }
 </style>
