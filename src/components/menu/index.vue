@@ -1,5 +1,9 @@
 <template>
   <div class="index">
+    <div @click="isCollapse=!isCollapse" class="logo-box bg-red flex justify-between align-center">
+      <img :src="imgs.logo" class="logo">
+      {{ENV}}环境
+    </div>
     <el-row class="tac">
       <el-col :span="24">
         <el-menu
@@ -7,6 +11,7 @@
           class="el-menu-vertical-demo"
           @open="handleOpen"
           @close="handleClose"
+          :collapse="isCollapse"
           background-color="#545c64"
           text-color="#fff"
           active-text-color="#ffd04b"
@@ -41,6 +46,28 @@
             <i class="el-icon-setting"></i>
             <span slot="title">导航四</span>
           </el-menu-item>
+          <el-submenu index="5">
+            <template slot="title">
+              <i class="el-icon-location"></i>
+              <span>图形</span>
+            </template>
+            <el-menu-item index="1-1" @click="goToPage('echarts')">
+              <i class="el-icon-setting"></i>
+              <span slot="title">插件</span>
+            </el-menu-item>
+            <el-menu-item index="1-2">
+              <i class="el-icon-setting"></i>
+              <span slot="title">原生</span>
+            </el-menu-item>
+          </el-submenu>
+          <el-submenu index="6">
+            <template slot="title">
+              <i class="el-icon-location"></i>
+              <span>富文本</span>
+            </template>
+            <el-menu-item index="1-1">WangEditer</el-menu-item>
+            <el-menu-item index="1-2">原生</el-menu-item>
+          </el-submenu>
         </el-menu>
       </el-col>
     </el-row>
@@ -51,7 +78,13 @@
 export default {
   name: "index",
   data() {
-    return {};
+    return {
+      ENV: process.env.NODE_ENV,
+      isCollapse: false,
+      imgs: {
+        logo: require('@/assets/imgs/avatar.png')
+      }
+    };
   },
 
   components: {},
@@ -74,6 +107,16 @@ export default {
 .index {
   /deep/ .el-menu {
     border:none;
+  }
+  .logo-box {
+    padding: 10px 5px;
+    .logo {
+      width:50px;
+      height:50px;
+      border:2px solid #f6f6f6;
+      border-radius:5px;
+      overflow: hidden;
+    }
   }
 }
 </style>

@@ -6,5 +6,14 @@ export default[{
     },
     // redirect: "",
     component: () => import('@/views/index.vue'),
-    children: []
+    children: [
+        {
+            path: '/echarts',
+            name: "echarts",
+            meta: {
+                title: 'echarts'
+            },
+            component: () => import('@/views/charts/index.vue')
+        }
+    ]
 }]

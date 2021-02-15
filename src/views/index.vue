@@ -2,7 +2,6 @@
   <div class="index flex justify-between">
     <menu-box class="menu-box qwe"></menu-box>
     <div class="content-box qwee">
-      <h1>11111</h1>
       <router-view></router-view>
     </div>
   </div>
@@ -29,16 +28,18 @@ export default {
 
 .index {
   height:100vh;
-  color:@text-color;
+  // color:@text-color;
   .menu-box {
     width: 300px;
     height: 100%;
-    background: @bg-color;
+    overflow-y: scroll;
+    // background: @bg-color;
   }
   .content-box {
-    width: calc(100% - 300px);
+    width: 100%;
     height: 100%;
     overflow-y: scroll;
+    padding: 10px;
   }
 }
 </style>
