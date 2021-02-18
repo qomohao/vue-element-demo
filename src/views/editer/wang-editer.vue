@@ -1,17 +1,14 @@
 <template>
-  <div class="index">
-    <h1>插件图表格</h1>
-    <h3>1、Echarts</h3>
-    <h3>2、HeightCharts</h3>
-    <h3>3、D3</h3>
-    <h3>4、WebGl</h3>
-    <h3>5、Three</h3>
+  <div class="wang-editer">
+    <h1>wang-editer</h1>
+    <i class="iconfont icon-chartLine"></i>
+    <i class="iconfont icon-areachart"></i>
   </div>
 </template>
 
 <script>
 export default {
-  name: "index",
+  name: "wang-editer",
   data() {
     return {};
   },
@@ -26,7 +23,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-  .index{
+  .wang-editer{
 
   }
 </style>

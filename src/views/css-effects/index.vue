@@ -1,11 +1,9 @@
 <template>
   <div class="index">
-    <h1>插件图表格</h1>
-    <h3>1、Echarts</h3>
-    <h3>2、HeightCharts</h3>
-    <h3>3、D3</h3>
-    <h3>4、WebGl</h3>
-    <h3>5、Three</h3>
+    <h1>CSS特效</h1>
+    <h3>1、按钮</h3>
+    <h3>2、动画</h3>
+    <h3>3、文字</h3>
   </div>
 </template>
 

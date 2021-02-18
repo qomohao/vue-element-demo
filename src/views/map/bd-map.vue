@@ -1,17 +1,12 @@
 <template>
-  <div class="index">
-    <h1>插件图表格</h1>
-    <h3>1、Echarts</h3>
-    <h3>2、HeightCharts</h3>
-    <h3>3、D3</h3>
-    <h3>4、WebGl</h3>
-    <h3>5、Three</h3>
+  <div class="bd-map">
+  <h1>百度地图</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: "index",
+  name: "bd-map",
   data() {
     return {};
   },
@@ -26,7 +21,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-  .index{
+  .bd-map{
 
   }
 </style>
