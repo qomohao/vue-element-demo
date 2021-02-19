@@ -1,14 +1,7 @@
 <template>
-  <div class="index">
-    <div
-      @click="isCollapse = !isCollapse"
-      class="logo-box bg-red flex justify-between align-center"
-    >
-      <img :src="imgs.logo" class="logo" />
-      {{ ENV }}环境
-    </div>
+  <div class="index bg-menu">
     <el-row class="tac">
-      <el-col :span="24">
+      <el-col>
         <el-menu
           default-active="2"
           class="el-menu-vertical-demo"
@@ -19,7 +12,15 @@
           text-color="#fff"
           active-text-color="#ffd04b"
         >
-          <el-menu-item index="1">
+          <div
+            @click="isCollapse = !isCollapse"
+            class="logo-box flex justify-between align-center pointer"
+            :class="isCollapse ? 'logo-box-sm' : ''"
+          >
+            <img :src="imgs.logo" class="logo" />
+            <span v-if="!isCollapse">{{ ENV }}环境</span>
+          </div>
+          <el-menu-item index="1" @click="goToPage('home')">
             <i class="el-icon-menu"></i>
             <span slot="title">首页</span>
           </el-menu-item>
@@ -37,7 +38,7 @@
               <span>原生</span>
             </el-menu-item>
           </el-submenu>
-          <el-menu-item index="3">
+          <el-menu-item index="3" @click="goToPage('css-effects')">
             <i class="el-icon-menu"></i>
             <span slot="title">CSS</span>
           </el-menu-item>
@@ -82,15 +83,53 @@
               <i class="el-icon-location"></i>
               <span>音视频</span>
             </template>
-            <el-menu-item index="8-1" @click="goToPage('menu-audio')">
+            <el-menu-item index="8-1" @click="goToPage('media-audio')">
               <i class="iconfont icon-chartLine"></i>
               <span>音频</span>
             </el-menu-item>
-            <el-menu-item index="8-2" @click="goToPage('menu-video')">
+            <el-menu-item index="8-2" @click="goToPage('media-video')">
               <i class="iconfont icon-chartLine"></i>
               <span>视频</span>
             </el-menu-item>
+            <el-menu-item index="8-3" @click="goToPage('media-live')">
+              <i class="iconfont icon-chartLine"></i>
+              <span>live</span>
+            </el-menu-item>
           </el-submenu>
+          <el-submenu index="9">
+            <template slot="title">
+              <i class="el-icon-location"></i>
+              <span>活动常用</span>
+            </template>
+            <el-menu-item index="9-1" @click="goToPage('media-audio')">
+              <i class="iconfont icon-chartLine"></i>
+              <span>水果机</span>
+            </el-menu-item>
+            <el-menu-item index="9-2" @click="goToPage('media-video')">
+              <i class="iconfont icon-chartLine"></i>
+              <span>转盘抽奖</span>
+            </el-menu-item>
+            <el-menu-item index="9-3" @click="goToPage('media-live')">
+              <i class="iconfont icon-chartLine"></i>
+              <span>红包雨</span>
+            </el-menu-item>
+          </el-submenu>
+          <el-menu-item index="10" @click="goToPage('')">
+            <i class="el-icon-menu"></i>
+            <span slot="title">剪切工具</span>
+          </el-menu-item>
+          <el-menu-item index="11" @click="goToPage('')">
+            <i class="el-icon-menu"></i>
+            <span slot="title">树</span>
+          </el-menu-item>
+          <el-menu-item index="12" @click="goToPage('')">
+            <i class="el-icon-menu"></i>
+            <span slot="title">功能引导</span>
+          </el-menu-item>
+          <el-menu-item index="13" @click="goToPage('')">
+            <i class="el-icon-menu"></i>
+            <span slot="title">介绍</span>
+          </el-menu-item>
         </el-menu>
       </el-col>
     </el-row>
@@ -132,7 +171,8 @@ export default {
     border: none;
   }
   .logo-box {
-    padding: 10px 5px;
+    padding: 10px 20px;
+    color: #fff;
     .logo {
       width: 50px;
       height: 50px;
@@ -140,6 +180,10 @@ export default {
       border-radius: 5px;
       overflow: hidden;
     }
+  }
+  .logo-box-sm {
+    padding: 10px 0;
+    justify-content: center;
   }
 }
 </style>

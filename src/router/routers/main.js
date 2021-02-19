@@ -1,17 +1,11 @@
 export default[
     {
-        path: '*',
-        redirect: {
-            name: 'home'
-        }
-    },
-    {
     path: '/',
     name: "home",
     meta: {
         title: '主页'
     },
-    // redirect: "",
+    redirect: "echarts-index",
     component: () => import('@/views/index.vue'),
     children: [
         {
@@ -34,7 +28,7 @@ export default[
             path: '/css-effects',
             name: "css-effects",
             meta: {
-                title: 'wang-editer'
+                title: 'css-effects'
             },
             component: () => import('@/views/css-effects/index.vue')
         },
@@ -87,20 +81,28 @@ export default[
             component: () => import('@/views/table/index.vue')
         },
         {
-            path: '/menu-audio',
-            name: "menu-audio",
+            path: '/media-audio',
+            name: "media-audio",
             meta: {
                 title: 'menu-audio'
             },
-            component: () => import('@/views/media/audio.vue')
+            component: () => import('@/views/media/media-audio.vue')
         },
         {
-            path: '/menu-video',
-            name: "menu-video",
+            path: '/media-video',
+            name: "media-video",
             meta: {
-                title: 'menu-video'
+                title: 'media-video'
             },
-            component: () => import('@/views/media/video.vue')
+            component: () => import('@/views/media/media-video.vue')
+        },
+        {
+            path: '/media-live',
+            name: "media-live",
+            meta: {
+                title: 'media-live'
+            },
+            component: () => import('@/views/media/media-live.vue')
         }
     ]
 }]

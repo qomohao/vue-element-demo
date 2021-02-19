@@ -1,27 +1,22 @@
 <template>
-  <div class="audio">
-    <h1>音频</h1>
+  <div class="main">
+    <h1>500 Page</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: "audio",
+  name: "500",
   data() {
     return {};
   },
-
   components: {},
-
   computed: {},
-
   mounted() {},
-
   methods: {},
 };
 </script>
 <style lang="less" scoped>
-  .audio{
-
-  }
+.main {
+}
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="index flex justify-between">
-    <menu-box class="menu-box qwe"></menu-box>
+    <menu-box class="menu-box"></menu-box>
     <div class="content-box qwee">
       <router-view></router-view>
     </div>

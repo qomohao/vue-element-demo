@@ -1,16 +1,12 @@
 <template>
-  <div class="index">
-    <h1>CSS特效</h1>
-    <h3>1、按钮</h3>
-    <h3>2、动画</h3>
-    <h3>3、文字特效</h3>
-    <h3>4、文字打印机（原型使用）</h3>
+  <div class="media-live">
+    <h1>H5直播</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: "index",
+  name: "media-live",
   data() {
     return {};
   },
@@ -25,7 +21,6 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-  .index{
-
-  }
+.media-live {
+}
 </style>

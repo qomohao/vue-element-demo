@@ -33,7 +33,7 @@ files.keys().forEach(v => {
     if (v == './index.js') return;
     routerArr.push(...files(v).default)
 })
-
+console.log('routerArr == ', routerArr)
 const router = new VueRouter({
     mode: 'history',
     routes: routerArr,
