@@ -35,7 +35,7 @@ files.keys().forEach(v => {
 })
 console.log('routerArr == ', routerArr)
 const router = new VueRouter({
-    mode: 'history',
+    // mode: 'history',
     routes: routerArr,
     // 页面滚动行为
     // scrollBehavior(to, from, savedPosition) {

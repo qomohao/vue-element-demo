@@ -1,5 +1,4 @@
-export default[
-    {
+export default [{
     path: '/',
     name: "home",
     meta: {
@@ -8,6 +7,9 @@ export default[
     redirect: "echarts-index",
     component: () => import('@/views/index.vue'),
     children: [
+        /**
+         * 图表
+         */
         {
             path: '/echarts-index',
             name: "echarts-index",
@@ -24,6 +26,9 @@ export default[
             },
             component: () => import('@/views/charts/original.vue')
         },
+        /**
+         * CSS
+         */
         {
             path: '/css-effects',
             name: "css-effects",
@@ -32,6 +37,9 @@ export default[
             },
             component: () => import('@/views/css-effects/index.vue')
         },
+        /**
+         * 富文本
+         */
         {
             path: '/wang-editer',
             name: "wang-editer",
@@ -48,6 +56,9 @@ export default[
             },
             component: () => import('@/views/editer/qill-editer.vue')
         },
+        /**
+         * 地图
+         */
         {
             path: '/gd-map',
             name: "gd-map",
@@ -64,6 +75,9 @@ export default[
             },
             component: () => import('@/views/map/bd-map.vue')
         },
+        /**
+         * 即时通讯
+         */
         {
             path: '/communication',
             name: "communication",
@@ -72,6 +86,9 @@ export default[
             },
             component: () => import('@/views/communication/index.vue')
         },
+        /**
+         * 表格
+         */
         {
             path: '/menu-table',
             name: "menu-table",
@@ -80,6 +97,9 @@ export default[
             },
             component: () => import('@/views/table/index.vue')
         },
+        /**
+         * media
+         */
         {
             path: '/media-audio',
             name: "media-audio",

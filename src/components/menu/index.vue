@@ -101,11 +101,11 @@
               <i class="el-icon-location"></i>
               <span>活动常用</span>
             </template>
-            <el-menu-item index="9-1" @click="goToPage('media-audio')">
+            <el-menu-item index="9-1" @click="goToPage('fruit-machine')">
               <i class="iconfont icon-chartLine"></i>
               <span>水果机</span>
             </el-menu-item>
-            <el-menu-item index="9-2" @click="goToPage('media-video')">
+            <el-menu-item index="9-2" @click="goToPage('')">
               <i class="iconfont icon-chartLine"></i>
               <span>转盘抽奖</span>
             </el-menu-item>
