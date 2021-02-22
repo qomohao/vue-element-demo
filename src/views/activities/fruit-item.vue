@@ -1,6 +1,8 @@
 <template>
-  <div class="fruit-item qwe" :style="fruitStyle" :data-fruit-sort='fruitInfo && fruitInfo.sort || null'>
-    <div class="qwee flex justify-center align-center ellipsis-row-1">{{fruitInfo && fruitInfo.sort}}{{fruitInfo && fruitInfo.name || '我是一个水果啊'}}</div>
+  <div class="fruit-item qwe" :style="fruitStyle">
+    <div class="flex justify-center align-center">
+      <div class="ellipsis-row-2">{{fruitInfo && fruitInfo.name || '我是一个水果啊我是一个水果啊我是一个水果啊'}} * {{fruitInfo && fruitInfo.double}}</div>
+    </div>
   </div>
 </template>
 

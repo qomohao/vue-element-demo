@@ -1,90 +1,110 @@
 <template>
   <div class="fruit-machine">
-    <h1>水果机</h1>
     <div class="fruit-box">
       <div class="flex">
         <fruit-item
           :class="activityNum === 1 ? 'activity-fruit' : ''"
-          :fruitInfo="{ name: '橘子', double: 2, sort: 1 }"
+          :fruitInfo="{ name: '苹果', id: 1, icon:'icon-king'}"
         ></fruit-item>
         <fruit-item
           :class="activityNum === 2 ? 'activity-fruit' : ''"
-          :fruitInfo="{ name: '大橘子', double: 2, sort: 2 }"
+          :fruitInfo="{ name: '小王', id: 2 }"
         ></fruit-item>
         <fruit-item
           :class="activityNum === 3 ? 'activity-fruit' : ''"
-          :fruitInfo="{ name: '橘子', double: 2, sort: 3 }"
+          :fruitInfo="{ name: 'King', id: 3 }"
         ></fruit-item>
         <fruit-item
           :class="activityNum === 4 ? 'activity-fruit' : ''"
-          :fruitInfo="{ name: '苹果', double: 2, sort: 4 }"
+          :fruitInfo="{ name: '大王', id: 4 }"
         ></fruit-item>
         <fruit-item
           :class="activityNum === 5 ? 'activity-fruit' : ''"
-          :fruitInfo="{ name: '大苹果', double: 2, sort: 5 }"
+          :fruitInfo="{ name: '大苹果', id: 5 }"
         ></fruit-item>
       </div>
       <div class="flex justify-between">
         <fruit-item
           :class="activityNum === 16 ? 'activity-fruit' : ''"
-          :fruitInfo="{ name: '大苹果', double: 2, sort: 16 }"
+          :fruitInfo="{ name: '西瓜', id: 16 }"
         ></fruit-item>
         <fruit-item
           :class="activityNum === 6 ? 'activity-fruit' : ''"
-          :fruitInfo="{ name: '大苹果', double: 2, sort: 6 }"
+          :fruitInfo="{ name: '大西瓜', id: 6 }"
         ></fruit-item>
       </div>
       <div class="flex justify-between">
         <fruit-item
           :class="activityNum === 15 ? 'activity-fruit' : ''"
-          :fruitInfo="{ name: '大苹果', double: 2, sort: 15 }"
+          :fruitInfo="{ name: '苹果', id: 15 }"
         ></fruit-item>
         <div
-          class="qwe centerInfo flex justify-center align-center"
+          class="qwe centerInfo flex justify-center align-center pointer"
           @click="go()"
         >
-          <div class="qwee">
-            <p>我是正中心</p>
-            <p>可用积分 9999</p>
+          <div class="qwe">
+            <div>中奖信息： 
+              <div>水果：{{winInfo ? winInfo.name : '--'}}</div>
+              <div>奖金：{{winInfo ? winInfo.num  + '(倍数*' + winInfo.double + ')=' + winInfo.num * winInfo.double : '--'}}</div>
+            </div>
           </div>
         </div>
         <fruit-item
           :class="activityNum === 7 ? 'activity-fruit' : ''"
-          :fruitInfo="{ name: '大苹果', double: 2, sort: 7 }"
+          :fruitInfo="{ name: '苹果', id: 7 }"
         ></fruit-item>
       </div>
       <div class="flex justify-between">
         <fruit-item
           :class="activityNum === 14 ? 'activity-fruit' : ''"
-          :fruitInfo="{ name: '大苹果', double: 2, sort: 14 }"
+          :fruitInfo="{ name: '大苹果', id: 14 }"
         ></fruit-item>
         <fruit-item
           :class="activityNum === 8 ? 'activity-fruit' : ''"
-          :fruitInfo="{ name: '大苹果', double: 2, sort: 8 }"
+          :fruitInfo="{ name: '柠檬', id: 8 }"
         ></fruit-item>
       </div>
       <div class="flex">
         <fruit-item
           :class="activityNum === 13 ? 'activity-fruit' : ''"
-          :fruitInfo="{ name: '大苹果', double: 2, sort: 13 }"
+          :fruitInfo="{ name: '大柠檬', id: 13 }"
         ></fruit-item>
         <fruit-item
           :class="activityNum === 12 ? 'activity-fruit' : ''"
-          :fruitInfo="{ name: '大苹果', double: 2, sort: 12 }"
+          :fruitInfo="{ name: '樱桃', id: 12 }"
         ></fruit-item>
         <fruit-item
           :class="activityNum === 11 ? 'activity-fruit' : ''"
-          :fruitInfo="{ name: '大苹果', double: 2, sort: 11 }"
+          :fruitInfo="{ name: '大樱桃', id: 11 }"
         ></fruit-item>
         <fruit-item
           :class="activityNum === 10 ? 'activity-fruit' : ''"
-          :fruitInfo="{ name: '大苹果', double: 2, sort: 10 }"
+          :fruitInfo="{ name: '杨桃', id: 10 }"
         ></fruit-item>
         <fruit-item
           :class="activityNum === 9 ? 'activity-fruit' : ''"
-          :fruitInfo="{ name: '大苹果', double: 2, sort: 9 }"
+          :fruitInfo="{ name: '大杨桃', id: 9 }"
         ></fruit-item>
       </div>
+    </div>
+    <div class="params-box">
+      运行速度：
+      <el-select v-model="changeSpeed" placeholder="请选择速度" :disabled="progressStatus">
+        <el-option
+          v-for="item in gameOptions"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        >
+        </el-option>
+      </el-select>
+    </div>
+    <div class="params-box">
+      押注：
+      <el-checkbox-group v-model="checkList" :disabled="progressStatus">
+        <el-checkbox :label="v.name + v.num" v-for="(v, i) in fruitList" :key="i"></el-checkbox>
+      </el-checkbox-group>
+      <p>已选中：{{checkList}}</p>
     </div>
   </div>
 </template>
@@ -95,9 +115,78 @@ export default {
   name: "fruit-machine",
   data() {
     return {
-      activityNum: 5,
+      // activityNum: Math.ceil(Math.random() * 16),
+      activityNum: 1,
       fruitArr: [],
       timer: null,
+      // 速度 --ms
+      changeSpeed: 200,
+      // 游戏是否进行中
+      progressStatus: false,
+      // 参数值 -- 速度
+      gameOptions: [
+        {
+          value: 200,
+          label: "正常速度 200ms",
+        },
+        {
+          value: 100,
+          label: "较快 100ms",
+        },
+        {
+          value: 50,
+          label: "很快 50ms",
+        },
+        {
+          value: 20,
+          label: "非常快 10ms",
+        },
+      ],
+      // 中奖信息
+      winInfo: null,
+      // 水果列表
+      fruitList: [
+        {
+          name:'小王',
+          num:2, // 单注
+          double:25, // 倍数
+        },
+        {
+          name:'大王',
+          num:2, // 单注
+          double:50, // 倍数
+        },
+        {
+          name:'King',
+          num:2, // 单注
+          double:100, // 倍数
+        },
+        {
+          name:'苹果',
+          num:2, // 单注
+          double:2, // 倍数
+        },
+        {
+          name:'西瓜',
+          num:10, // 单注
+          double:3, // 倍数
+        },
+        {
+          name:'柠檬',
+          num:6, // 单注
+          double:4, // 倍数
+        },{
+          name:'杨桃',
+          num:10, // 单注
+          double:2, // 倍数
+        },{
+          name:'樱桃',
+          num:5, // 单注
+          double:2, // 倍数
+        },
+      ],
+      // 选中水果
+      checkList: []
     };
   },
 
@@ -111,24 +200,41 @@ export default {
   },
 
   methods: {
+    // 转动水果机
     go() {
+      this.progressStatus = !this.progressStatus
       if (this.timer) {
         clearInterval(this.timer);
         this.timer = null;
+        this.timeCount = 0;
+        //获取中奖信息
+        this.getwinInfo()
       } else {
         this.timer = setInterval(() => {
           if (this.activityNum >= this.fruitArr.length) {
             this.activityNum = 0;
           }
           this.activityNum += 1;
-        }, 50);
+        }, this.changeSpeed);
       }
     },
+    // 获取中奖信息
+    getwinInfo () {
+      this.$children.forEach(v => {
+        if(v.$el.className.indexOf('activity-fruit') > -1 && this.fruitList.map(v => v.name).indexOf(v.$options.propsData.fruitInfo.name)>-1) {
+          console.log(v);
+          let winFruit = this.fruitList[this.fruitList.map(v => v.name).indexOf(v.$options.propsData.fruitInfo.name)]
+          this.winInfo = Object.assign(v.$options.propsData.fruitInfo, winFruit)
+          console.log(this.winInfo);
+        }
+      })
+    }
   },
 };
 </script>
 <style lang="less" scoped>
 .fruit-machine {
+  padding: 20px 0;
   .fruit-box {
     width: 500px;
   }
@@ -139,6 +245,9 @@ export default {
   .activity-fruit {
     border: 3px solid red;
     background: red;
+  }
+  .params-box {
+    margin-top: 20px;
   }
 }
 </style>
