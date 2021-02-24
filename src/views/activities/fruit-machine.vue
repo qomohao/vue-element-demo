@@ -102,7 +102,7 @@
     <div class="params-box">
       押注：
       <el-checkbox-group v-model="checkList" :disabled="progressStatus">
-        <el-checkbox :label="v.name + v.num" v-for="(v, i) in fruitList" :key="i"></el-checkbox>
+        <el-checkbox :label="v.name" v-for="(v, i) in fruitList" :key="i"></el-checkbox>
       </el-checkbox-group>
       <p>已选中：{{checkList}}</p>
     </div>
@@ -202,6 +202,7 @@ export default {
   methods: {
     // 转动水果机
     go() {
+      this.winInfo = null
       this.progressStatus = !this.progressStatus
       if (this.timer) {
         clearInterval(this.timer);
@@ -221,11 +222,19 @@ export default {
     // 获取中奖信息
     getwinInfo () {
       this.$children.forEach(v => {
-        if(v.$el.className.indexOf('activity-fruit') > -1 && this.fruitList.map(v => v.name).indexOf(v.$options.propsData.fruitInfo.name)>-1) {
-          console.log(v);
-          let winFruit = this.fruitList[this.fruitList.map(v => v.name).indexOf(v.$options.propsData.fruitInfo.name)]
-          this.winInfo = Object.assign(v.$options.propsData.fruitInfo, winFruit)
-          console.log(this.winInfo);
+        if(v.$el.className.indexOf('activity-fruit') > -1) {
+          // 选中的Dom props信息   name、id
+          let winName = v.$options.propsData.fruitInfo.name
+          // 选中Dom，对应详细信息
+          let winFruit = this.fruitList.filter(v => winName.indexOf(v.name) > -1)
+          // 中奖
+          if (winFruit.length && this.checkList.indexOf(winFruit[0].name) > -1){
+            // “大”水果 奖金倍数*2
+            if (winName.indexOf('大') > -2) {
+              winFruit[0].double = winFruit[0].double * 2
+            }
+            this.winInfo = Object.assign(winFruit[0], v.$options.propsData.fruitInfo)
+          }
         }
       })
     }
