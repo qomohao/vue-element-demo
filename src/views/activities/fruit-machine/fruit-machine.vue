@@ -195,13 +195,16 @@ export default {
   computed: {},
 
   mounted() {
-    console.log(document.getElementsByClassName("fruit-item"));
     this.fruitArr = document.getElementsByClassName("fruit-item");
   },
 
   methods: {
     // 转动水果机
     go() {
+      if (!this.checkList.length) {
+        this.$message.warning('请先选择水果！')
+        return
+      }
       this.winInfo = null
       this.progressStatus = !this.progressStatus
       if (this.timer) {

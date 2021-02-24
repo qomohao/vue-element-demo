@@ -1,7 +1,7 @@
 <template>
   <div class="fruit-item qwe" :style="fruitStyle">
     <div class="flex justify-center align-center">
-      <div class="ellipsis-row-2">{{fruitInfo && fruitInfo.name || '我是一个水果啊我是一个水果啊我是一个水果啊'}} * {{fruitInfo && fruitInfo.double}}</div>
+      <div class="ellipsis-row-2">{{fruitInfo && fruitInfo.name || '我是一个水果啊我是一个水果啊我是一个水果啊'}}</div>
     </div>
   </div>
 </template>

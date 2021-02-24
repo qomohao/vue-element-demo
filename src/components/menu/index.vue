@@ -105,7 +105,7 @@
               <i class="iconfont icon-chartLine"></i>
               <span>水果机</span>
             </el-menu-item>
-            <el-menu-item index="9-2" @click="goToPage('')">
+            <el-menu-item index="9-2" @click="goToPage('disc')">
               <i class="iconfont icon-chartLine"></i>
               <span>转盘抽奖</span>
             </el-menu-item>
