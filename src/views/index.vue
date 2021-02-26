@@ -9,6 +9,7 @@
 
 <script>
 import menuBox from '@/components/menu'
+import { mapState } from 'vuex'
 export default {
   name: "index",
   data() {
@@ -17,9 +18,13 @@ export default {
 
   components: { menuBox },
 
-  computed: {},
+  computed: {
+    ...mapState('home',['menuFold'])
+  },
 
-  mounted() {},
+  mounted() {
+    console.log(this.menuFold);
+  },
 
   methods: {},
 };

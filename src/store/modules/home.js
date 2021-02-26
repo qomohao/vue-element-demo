@@ -1,9 +1,10 @@
 export default {
     state:{
-        menuShow:false,
+        // 菜单折叠
+        menuFold:false,
     },
     mutations:{
-        setmenuShow(state, val) {
+        setMenuFold(state, val) {
             state.menuShow = val;
         }
     }

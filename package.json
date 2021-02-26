@@ -28,7 +28,8 @@
     "vue-amap": "^0.5.10",
     "vue-cli-plugin-style-resources-loader": "^0.1.4",
     "vue-router": "^3.4.3",
-    "vuex": "^3.5.1"
+    "vuex": "^3.5.1",
+    "wangeditor": "^4.6.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
