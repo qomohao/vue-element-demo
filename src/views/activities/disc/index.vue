@@ -3,7 +3,6 @@
     <h1>幸运转盘</h1>
     <div class="content">
       <!-- <sector></sector> -->
-      <!-- <sector-item></sector-item> -->
       <canvas-sector></canvas-sector>
     </div>
   </div>
@@ -11,7 +10,6 @@
 
 <script>
 import sector from "./sector.vue";
-import sectorItem from "./sector-item.vue";
 import canvasSector from "./canvas-sector.vue";
 export default {
   name: "index",
@@ -19,7 +17,7 @@ export default {
     return {};
   },
 
-  components: { sector, sectorItem, canvasSector },
+  components: { sector, canvasSector },
 
   computed: {},
 

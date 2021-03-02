@@ -1,7 +1,7 @@
 <template>
   <div class="canvas-sector qwee">
     <canvas id="sector-canvas" :style="canvasStyle" width="300" height="300"></canvas>
-    <i class="iconfont icon-huodong center-btn" @click="go()"></i>
+    <i class="iconfont icon-huodong center-btn pointer" @click="go()"></i>
   </div>
 </template>
 
@@ -12,27 +12,31 @@ export default {
     return {
       // 奖品数量
       prizeNum: 6,
-      canvasStyle: {
-        width: 300,
-        height: 300
-      },
+      // 已经旋转的度数
+      rotateNum: 0,
+      // 顺时针/逆时针旋转  1/-1
+      rotateDuration: 1,
+      // 旋转计时器
+      rotateTimer: null,
+      // 旋转速度  100ms
+      rotateSpeed: 10,
       sectorGifts: [{
           name: '谢谢参与',
           id: 1
       },{
-          name: '22222',
+          name: '2',
           id: 2
       },{
-          name: '111111',
+          name: '3',
           id: 1
       },{
-          name: '233333333',
+          name: '4',
           id: 2
       },{
-          name: '谢谢参与',
+          name: '5',
           id: 1
       },{
-          name: '66666 ',
+          name: '6 ',
           id: 2
       }],
       sectorColors: ["#AE3EFF","#4D3FFF","#FC262C","#3A8BFF","#EE7602","#FE339F"],
@@ -46,7 +50,15 @@ export default {
 
   components: {},
 
-  computed: {},
+  computed: {
+    canvasStyle() {
+      return {
+        width: 300,
+        height: 300,
+        transform: `rotate(${this.rotateNum}deg)`
+      }
+    }
+  },
 
   mounted() {
     window.onload = this.drawCanvas();
@@ -85,7 +97,8 @@ export default {
             // 文字
             ctx.fillStyle = "#fff";
             ctx.font = "16px sans-serif";
-            ctx.fillText(this.sectorGifts[i].name + i, -ctx.measureText(this.sectorGifts[i].name).width / 2, 100, 60);
+            // ctx.fillText(this.sectorGifts[i].name, -ctx.measureText(this.sectorGifts[i].name).width / 2, 100, 60);
+            ctx.fillText(this.sectorGifts[i].name, -ctx.measureText(this.sectorGifts[i].name).width / 2, 100, 60);
             let img = new Image();
             img.onload = function(){
                 // 将图片画到canvas上
@@ -96,17 +109,33 @@ export default {
             ctx.restore();
         }
     },
+    // 旋转转盘
     go () {
-        let canvas = document.getElementById("sector-canvas");
-        canvas.rotate({
-        angle: 0,
-        animateTo: 60 + 360 * 5, // 这里多旋转了5圈，圈数越多，转的越快
-        duration: 8000,
-        callback: function() { // 回调
-            //弹出中奖提示
-            // turnWheel.bRotate = !turnWheel.bRotate;
-        }
-    });
+      if (this.rotateTimer) {
+        clearInterval(this.rotateTimer)
+        this.rotateTimer = null
+        // this.rotateNum = 0
+        console.log("已经旋转的角度====", this.rotateNum);
+        this.getReward()
+      } else {
+        this.rotateTimer = setInterval(() => {
+        this.rotateNum += this.rotateDuration * 15
+        }, this.rotateSpeed)
+      } 
+    },
+    // 计算旋转角度 计算中奖奖品
+    getReward () {
+      // 每个礼物占用的角度
+      const giftAngle = 360 / this.prizeNum
+      // 顺时针/逆时针 旋转
+      if (this.rotateDuration) {
+        // 模运算 剩余角度（去除多余的360度）
+        let surplusAngle = this.rotateNum % 360// 已经旋转的角度
+        console.log(surplusAngle);
+        let giftNum = Math.floor(surplusAngle / giftAngle)
+        console.log("中奖号码 === ", giftNum)
+      }
+      
     }
   },
 };
@@ -114,6 +143,9 @@ export default {
 <style lang="less" scoped>
 .canvas-sector {
   position: relative;
+  canvas {
+    transition: transform 3s cubic-bezier(.2,.93,.43,1);
+  }
   .center-btn {
     position: absolute;
     left: 120px;
@@ -124,6 +156,7 @@ export default {
     background-color: #fff;
     line-height: 60px;
     text-align: center;
+    transition: transform 3s cubic-bezier(.2,.93,.43,1);
   }
   .center-btn:after {
     position: absolute;

@@ -1,7 +1,6 @@
 <template>
   <div class="wang-editer">
     <div id="editerDom"></div>
-
     <h3>相关操作</h3>
     <div class="act-box">
       <el-button @click="getEditorData">获取当前内容</el-button>
@@ -45,6 +44,7 @@ export default {
       editor.config.onchange = (newHtml) => {
         this.editorData = newHtml;
       };
+      editor.config.zIndex = 50
       // 创建编辑器
       editor.create();
       editor.txt.html('<p>文档：<a href="https://doc.wangeditor.com/" target="_blank">https://doc.wangeditor.com/</a></p>')
@@ -53,7 +53,15 @@ export default {
     getEditorData() {
       // 通过代码获取编辑器内容
       let data = this.editor.txt.html();
-      alert(data);
+      this.$alert(data, '编辑器内容', {
+          confirmButtonText: '确定',
+          callback: action => {
+            this.$message({
+              type: 'info',
+              message: `action: ${ action }`
+            });
+          }
+        });
     },
     clearEditorData () {
       this.editor.txt.clear()
